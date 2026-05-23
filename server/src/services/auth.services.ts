@@ -5,9 +5,9 @@ import {
 } from "../models/users.models.js";
 import { ROLES, type Roles } from "../types/roles.types.js";
 import { AppError } from "../utils/handleError.js";
-import jwt from "jsonwebtoken";
+import jwt, { type JwtPayload } from "jsonwebtoken";
 
-export interface JWTPayload {
+export interface JWTPayload extends JwtPayload {
   id: string;
   email: string;
   role: string;
@@ -73,3 +73,5 @@ export class AuthServices {
     return token;
   }
 }
+
+export const authServices = new AuthServices();
