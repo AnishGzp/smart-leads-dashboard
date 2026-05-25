@@ -1,5 +1,5 @@
 export interface IResponse {
-  success: string;
+  success: boolean;
   message: string;
   error?: {
     msg: string;

@@ -9,6 +9,7 @@ import { dbConnect } from "./config/dbConnect.js";
 import { adminSeeder } from "./config/seeding.js";
 import { sendSuccess } from "./utils/apiResponse.js";
 import authRoutes from "./routes/auth.routes.js";
+import sidebarRouter from "./routes/sidebar.routes.js";
 
 const PORT = process.env.PORT || 4001;
 
@@ -34,6 +35,7 @@ app.get("/api/health", (req, res) => {
 
 // API routes
 app.use("/api/auth", authRoutes);
+app.use("/api/sidebar", sidebarRouter);
 
 // Global error handler
 app.use(handleError);
