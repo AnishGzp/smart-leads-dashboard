@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import type { NextFunction, Request, Response } from "express";
 import type { JWTPayload } from "../services/auth.services.js";
-import { sendSuccess } from "../utils/apiResponse.js";
+import { AppError } from "../utils/handleError.js";
 
 const JWT_SECRET = process.env.JWT_SECRET || "my-super-secret-key";
 
@@ -13,7 +13,7 @@ export const authenticate = (
   try {
     const token = req.cookies.token;
     if (!token) {
-      sendSuccess(res, "Unauthorized Access", null, 401);
+      throw new AppError(400, "Unauthorized access");
     }
 
     const decoded = jwt.verify(token, JWT_SECRET) as JWTPayload;

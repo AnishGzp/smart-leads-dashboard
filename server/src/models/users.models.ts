@@ -1,12 +1,12 @@
 import { model, Schema, type HydratedDocument } from "mongoose";
-import { ROLES } from "../types/roles.types.js";
+import { ROLES, type Roles } from "../types/roles.types.js";
 import bcrypt from "bcryptjs";
 
 export interface IUser {
   name: string;
   email: string;
   password: string;
-  role: string;
+  role: Roles;
 
   comparePassword(candidate: string): Promise<boolean>;
 }
